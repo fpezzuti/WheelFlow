@@ -47,7 +47,7 @@ public class PathActivity extends AppCompatActivity implements OnMapReadyCallbac
     private ActivityMapsBinding binding;
     private ArrayList<Landmark> landmarks = new ArrayList<>();
     private FusedLocationProviderClient locationClient;
-    private final String API_KEY = "AIzaSyDEM0FFaaLAtaux54IVvpSP8RlDdJ_q-SE";
+    private final String API_KEY = "[insert here your API key]";
     private TextView textView;
     private LatLng coordinatesStart =  new LatLng(43.724591,10.382981);
 
