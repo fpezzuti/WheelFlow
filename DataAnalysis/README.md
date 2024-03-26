@@ -2,21 +2,15 @@
 
 In this repository you can find all the code used for analyzing the data collected by the RecordApplication in the first stage of the WheelFlow project.
 
-## The [`data_analysis.py`](./data_analysis.py) file
+## Data analysis
+In the [`data_analysis.py`](./data_analysis.py) can be found the final pipeline used for the data analysis and segmentation tasks.
 
-In this file you can find the final pipeline used for the data analysis, following the segmentation tasks.  
-The script written in this file:  
-1. imports the segmented datasets from `.csv` files contained in the [data folder](./data)   
-    
-    then, for each dataset
-
-2. renames the features and converts the class labels into numerical attributes according to the classification type (binary or multiclass)
-3. performs normalization, feature selection and rebalancing using different importance indexes for the feature selection task  
-
-    finally, for each combination of dataset, classification type and importance index on feature selection
-
-4. performs a 10-fold cross-validation using different classifiers
-5. appends the results in the [`classification_results.csv`](./classification_results.csv) file.
+The pipeline consists in:  
+1. **import the segmented datasets** from the `.csv` files contained in the [data folder](./data)   
+2. for each dataset, **rename the features** and **convert class labels into numerical attributes** according to the classification type (binary or multiclass)
+3. perform **normalization**, **feature selection** with different importance indexes, and **rebalancing**
+4. for each set of dataset, classification type and importance index, perform a **10-fold cross-validation** using various classifiers
+6. **save the results** in the [`classification_results.csv`](./classification_results.csv) file.
 
 ## Notebooks in the [python](./python) folder
 
