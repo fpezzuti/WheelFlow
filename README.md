@@ -1,4 +1,4 @@
-# WheelFlow - assistente smart all’accessibilità urbana
+# WheelFlow: assistente smart all’accessibilità urbana
 
 This repository contains the code and the documentation for the project "WheelFlow - assistente smart all'accessibilità urbana" presented at conference "Città 30 corriamo! L’urbanismo tattico, strada virtuosa per la mobilità sostenibile" in occasion of the European Mobility Week held in Pisa in 16/09/2022.
 
