@@ -6,6 +6,14 @@ This repository contains the code and the documentation for the project "WheelFl
   <img src="./poster-wheelflow.svg" width="500" title="WheelFlow poster" alt="WheelFlow poster presented at European Mobility Week 16/09/2022.">
 </p>
 
+The application has been designed and developed as final project for the cours Mobile and Social Sensing Systems of the University of Pisa.
+
+The **contributors** of this project are:
+- [Francesca Pezzuti](https://github.com/fpezzuti)
+- [Pietro Tempesti](https://github.com/PieTempesti98)
+- [Franco Terranova](https://github.com/terranovafr)
+- [Benedetta Tessa](https://github.com/btessa99/)
+
 ## What is WheelFlow?
 Paths’ accessibility is an important problem for user with mobility issues. WheelFlow focuses on **collecting** and **sharing** **geo-localized accessibility information** about routes in order to **assist wheelchair
 users**.
