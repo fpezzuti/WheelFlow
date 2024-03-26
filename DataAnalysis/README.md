@@ -1,6 +1,6 @@
 # WheelFlow Data Analysis
 
-In this repository you can find all the code used for analyzing the data collected by the RecordApplication in the first stage of the WheelFlow project.
+This [directory](./) contans all the Python code and the Jupyter notebooks used for analyzing the data collected by the [RecordApplication](./../RecordApplication).
 
 ## Data analysis
 In the [`data_analysis.py`](./data_analysis.py) can be found the final pipeline used for the data analysis and segmentation tasks.
@@ -12,31 +12,32 @@ The pipeline consists in:
 4. for each set of dataset, classification type and importance index, perform a **10-fold cross-validation** using various classifiers
 6. **save the results** in the [`classification_results.csv`](./classification_results.csv) file.
 
-## Notebooks in the [python](./python) folder
+All the code is containedin the Jupyter notebooks in the [python](./python) folder.
 
-In this folder there are notebooks for each single step of the data analysis, including some of the steps of the final pipeline descripted before, like the [classification notebook](./python/classification.ipynb), [addColumnsName notebook](./python/addColumnsName.ipynb), the three feature selection notebooks, one for [binary classification](./python/featureselection_binary.ipynb), one for [multiclassclassification](./python/featureselection_allClasses.ipynb), and one [more general](./python/featureselection.ipynb).
+## Data visualization & PCA
 
-There are also some notebooks used to visualize and plot the data, like the [data visualization notebook](./python/datavisualization.ipynb) and the [PCA notebook](./python/PCA.ipynb) used to plot data in two dimensions.
+- to **visualize and plot the data**, the [data visualization notebook](./python/datavisualization.ipynb) can be used.
+- to plot data in two dimensions, the [PCA notebook](./python/PCA.ipynb) can be used.
 
-### [data cleaning notebook](./python/datacleaning.ipynb)
-
-In this notebook the raw data received from the smartphone sensors is cleaned and prepared for the data segmentation and the feature extraction.  
+## Data cleaning
+In the [data cleaning notebook](./python/datacleaning.ipynb) notebook the raw data received from the smartphone sensors is cleaned and prepared for the data segmentation and the feature extraction.  
 
 The `.csv` data were imported, and the script removes the rows in which 2/3 of the features are 0 (non-meaningful record); then the three columns from each smartphone sensor are aggregated with the norm of the three coordinates (i. e. `ACC_X`, `ACC_Y`, `ACC_Z` -> `ACC` = `|ACC_X^2 + ACC_Y^2 + ACC_Z^2|`)
 
-### [segmentation notebook](./python/segmentation.ipynb)  
+## Segmentation
 
-This notebook contains the code for segmenting the already cleaned data and extracting the final features from each window.  
+The [segmentation notebook](./python/segmentation.ipynb) contains the code for **segmenting the cleaned data** and **extracting the features from each window**.  
 
-First, the script creates the *macro windows*, one for each recording, and from each macro window it creates the actual windows.
+The script follows these **steps**: 
+1. **creates the *macro windows***, one for each recording.
+2. from each macro window, **creates the actual *windows***.
+3. applies the **wavelet transformation** to time domain's features (one for each sensor), obtaining 2 additional features for each sensor.
+4. **extracts the aggregated features** from each window
+5. **exports the dataset** in a `.csv` file
 
-Once a window is defined, the features from the time domain (one for each sensor) are transformed using the **wavelet transformation**, obtaining 2 more features for each sensor.
+The segmentation notebook has three **parameters**:
+- `OFFSET`: distance between two different macro windows, in seconds
+- `WINDOW`: width of a single time window, expressed in seconds
+- `OVERLAP`: size of the overlapping region between two adjacent windows
 
-Finally, from each window the script extracts the aggregated final features, and exports the final dataset in a `.csv` file.
-
-You can specify three segmentation parameters:
-- `OFFSET`: the distance between two different macro windows, in seconds
-- `WINDOW`: the width of a single time window, expressed in seconds
-- `OVERLAP`: how much two adjacent windows will overlap each other
-
-The features extracted from each window are min, max, difference between min and max, kurtosis, skewness, mean, standard deviation, median, energy, first and third quartile, and the number of peaks for each cleaned feature, with a total of 117 features.
+The **features extracted** from each window are _min_, _max_, difference between _min_ and _max_, _kurtosis_, _skewness_, _mean_, _standard deviation_, _median_, _energy_, 1st and 3rd _quartiles_, and the _number of peaks for each cleaned feature_, with a total of **117 features**.
